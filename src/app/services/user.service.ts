@@ -8,7 +8,7 @@ export class UserService {
 
   users : User[] = [
     {
-      id : 101,
+      id : 1,
       firstName : "sonali",
       lastName : "kashyap",
       address : "80 D",
@@ -17,7 +17,7 @@ export class UserService {
       order : 1000
     },
     {
-      id : 102,
+      id : 2,
       firstName : "suman",
       lastName : "kashyap",
       address : "80 D",
@@ -35,6 +35,7 @@ export class UserService {
 
   onAdd(user : User)
   {
+    //this.onDelete(0);
     this.users.push(user);
   }
   onDelete(id : number)
@@ -42,5 +43,21 @@ export class UserService {
     let user = this.users.find(x => x.id === id);
     let index = this.users.indexOf(user, 0);
     this.users.splice(index,1);
+  }
+
+  onGetUser(id : number)
+  {
+    return (this.users.find(x => x.id === id));
+  }
+
+  onUpdate(user : User)
+  {
+    let oldUser = this.users.find(x => x.id === user.id);
+    oldUser.firstName = user.firstName;
+    oldUser.lastName = user.lastName;
+    oldUser.address = user.address;
+    oldUser.city = user.city;
+    oldUser.state = user.state;
+    oldUser.order = user.order;
   }
 }

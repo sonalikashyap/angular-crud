@@ -3,6 +3,7 @@
     <a routerLink = "user/add/0" class = "btn btn-primary mt-5 mb-3">Add User</a>
     <table class = "table">
         <thead>
+            <th>User ID</th>
             <th>First name</th>
             <th>Last name</th>
             <th>Address</th>
@@ -14,16 +15,17 @@
         </thead>
         <tbody>
             <tr *ngFor = "let user of users">
+                <td>{{user.id}}</td>
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.address}}</td>
                 <td>{{user.city}}</td>
                 <td>{{user.state}}</td>
                 <td>{{user.order}}</td>
-                <td><a [routerLink] = "['user/edit',user.id]">Update</a></td>
-                <td><button (click) = "onDelete(user.id)">Delete</button></td>
+                <td><a class = "btn btn-warning" [routerLink] = "['user/edit/',user.id]">Update</a></td>
+                <td><button class = "btn btn-danger" (click) = "onDelete(user.id)">Delete</button></td>
             </tr>
         </tbody>
     </table>
-    <!-- <router-outlet></router-outlet> -->
+    <router-outlet></router-outlet>
 </div>
